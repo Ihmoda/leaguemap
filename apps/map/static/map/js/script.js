@@ -951,6 +951,7 @@ require([
       "<li><p1>Charter MLO Sharing:</p1> {MLO_SHARIN: percentformat}</li>" +
       "<li><p1>Population:</p1> {POP_TOT}</li>" +
       "<li><p1>K12 Enrollment (2016):</p1> {K12_POP}</li>" +
+      "<li><p1>Students of Color % (2016):</p1> {PERCENT_MI: percentformat}</li>" +
       "<li><p1>FRL % (2016):</p1> {FRL_PERCEN: percentformat}</li>" +
       "<li><p1>ELL % (2016):</p1> {ELL_PERCEN: percentformat}</li>" +
       "<li><p1>IEP % (2016):</p1> {IEP_PERCEN: percentformat}</li>" +
@@ -1142,7 +1143,6 @@ require([
    * add featurelayers to map
    *
    ******************************************************************/
-
   var districts = new FeatureLayer({
     url: "https://services8.arcgis.com/i7OPmUoTPHFfRStk/arcgis/rest/services/coloradoschooldistricts/FeatureServer",
     renderer: districtrenderer,
@@ -1711,10 +1711,8 @@ require([
       senateDistricts.visible = false;
       congressionalDistricts.visible = false;
       georenderer.visualVariables = [];
-
       var geo = $("select[name=geoSelection]").val();
       var variable = $("select[name=geoStyleSelection]").val();
-
       if (geo == "1") {
         districts.visible = false;
       } else if (geo == "2" && variable == "1") {
@@ -1850,7 +1848,7 @@ require([
      * Jquery for filter schools panel
      *
      ******************************************************************/
-    var districts = [
+    var school_districts = [
       "ACADEMY 20",
       "ADAMS 12 FIVE STAR SCHOOLS",
       "ADAMS COUNTY 14",
@@ -2031,9 +2029,8 @@ require([
       "YUMA 1"
     ];
     $("#filterSchoolsLink").click(function() {
-      for (var i = 0; i < districts.length; i++) {
-        console.log("test");
-        $("#selectDistrict").append("<option>" + districts[i] + "</option>");
+      for (var i = 0; i < school_districts.length; i++) {
+        $("#selectDistrict").append("<option>" + school_districts[i] + "</option>");
       }
     });
   });
