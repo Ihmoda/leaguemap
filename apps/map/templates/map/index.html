@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-  <title>Colorado School Quality Map</title>
+  <title>Colorado K-12 School Quality Map</title>
 
   <!-- Calcite Bootstrap -->
   <link rel="stylesheet" href="https://esri.github.io/calcite-maps/dist/css/calcite-maps-bootstrap-v0.6.css">
@@ -45,7 +45,7 @@
           <a role="menuitem" tabindex="0" data-target="#modalSplash" data-toggle="modal" aria-haspopup="true">About</a>
         </li>
         <li>
-          <a role="button" data-target="#filterSchools" aria-haspopup="true">
+          <a role="button" data-target="#filterSchools" aria-haspopup="true" id="filterSchoolsLink">
             <span class="glyphicon glyphicon-filter"></span> Filter Schools</a>
         </li>
         <li>
@@ -126,36 +126,40 @@
     </div>
   </div>
 
-    <div id="modalSchools" class="modal fade">
-        <div class="modal-dialog" id="modal-dialog2">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Filtered Schools</h4>
-                </div>
-                <div class="modal-body" id="modal-body2">
-                    <table class="table table-striped table-hover">
-                        <thead>
-                          <tr>
-                            <th>School Code (CDE)</th>
-                            <th>School Name</th>
-                            <th>School District</th>
-                          </tr>
-                        </thead>
-                        <tbody id="schoolData">
-                          <tr><td scope="row"></td><td></td><td></td></tr>
-                        </tbody>
-                      </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-            <!-- /.modal-content -->
+  <div id="modalSchools" class="modal fade">
+    <div class="modal-dialog" id="modal-dialog2">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Filtered Schools</h4>
         </div>
-        <!-- /.modal-dialog -->
+        <div class="modal-body" id="modal-body2">
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>School Code (CDE)</th>
+                <th>School Name</th>
+                <th>School District</th>
+              </tr>
+            </thead>
+            <tbody id="schoolData">
+              <tr>
+                <td scope="row"></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
     </div>
-    <!-- /.modal -->
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
 
   <!-- Map  -->
 
@@ -189,6 +193,18 @@
       <div id="collapsefilterSchools" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingfilterSchools">
         <div class="panel-body">
           <div class="form-horizontal">
+
+            <!-- School District -->
+
+            <div class="form-group">
+              <label for="schoolDistrict" class="col-xs-12">School District</label>
+              <div class="col-xs-12">
+                <select id="selectDistrict" class="form-control" name="schoolDistrict">
+                  <option value="0">All</option>
+                </select>
+              </div>
+            </div>
+
 
             <!-- School Level -->
 
@@ -317,7 +333,7 @@
             </div>
             <div class="form-group">
               <div class="col-xs-12">
-                  <a role="button" id="schoolList" class="btn btn-primary btn-block" data-target="#modalSchools" data-toggle="modal" aria-haspopup="true">School List</a>
+                <a role="button" id="schoolList" class="btn btn-primary btn-block" data-target="#modalSchools" data-toggle="modal" aria-haspopup="true">School List</a>
               </div>
             </div>
             <div class="form-group">
