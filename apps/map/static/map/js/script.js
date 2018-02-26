@@ -1506,8 +1506,6 @@ require([
         string += " AND (DISTRICT_NAME = " + selectedDistrict + ")";
       }
 
-      console.log(string);
-
       schools.definitionExpression = string;
       count = 0;
       string = "";
